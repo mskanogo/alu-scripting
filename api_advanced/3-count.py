@@ -8,7 +8,7 @@ def count_words(subreddit, word_list, counts={}, after=None):
     url = "https://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
     if after:
         url += "&after={}".format(after)
-    headers = {"User-Agent": "MyBot/1.0"}
+    headers = {"User-Agent": "MyBot/1.0 by /u/myuser"}
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code != 200:
         return
@@ -16,7 +16,6 @@ def count_words(subreddit, word_list, counts={}, after=None):
     posts = data.get("children", [])
     if not posts:
         return
-    # Initialize counts for words not yet seen
     for word in word_list:
         w = word.lower()
         if w not in counts:
