@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Module that queries Reddit API and prints top 10 hot posts"""
+import sys
 import requests
 
 
@@ -17,3 +18,10 @@ def top_ten(subreddit):
     posts = data.get("data", {}).get("children", [])
     for post in posts:
         print(post.get("data", {}).get("title"))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Please pass an argument for the subreddit to search.")
+    else:
+        top_ten(sys.argv[1])
