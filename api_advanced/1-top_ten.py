@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module that queries Reddit API and prints top 10 hot posts"""
-import sys
 import requests
+import sys
 
 
 def top_ten(subreddit):
